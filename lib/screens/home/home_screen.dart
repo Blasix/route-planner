@@ -301,9 +301,6 @@ class HomeScreen extends ConsumerWidget {
                                   ref
                                       .read(homeStateProvider.notifier)
                                       .setRecent(false);
-                                  ref
-                                      .read(homeStateProvider.notifier)
-                                      .setTemplate(false);
                                 }
                               },
                               child: AnimatedContainer(
@@ -329,150 +326,44 @@ class HomeScreen extends ConsumerWidget {
                             ),
                           ],
                         ),
-                        const SizedBox(
-                          height: 10,
-                        ),
-                        Row(
-                          children: [
-                            Visibility(
-                              visible: homeState.isRecent,
-                              child: InkWell(
-                                borderRadius:
-                                    const BorderRadius.all(Radius.circular(12)),
-                                onTap: () {
-                                  if (!homeState.isTemplate) {
-                                    ref
-                                        .read(homeStateProvider.notifier)
-                                        .setTemplate(true);
-                                  }
-                                },
-                                child: AnimatedContainer(
-                                  duration: buttonDuration,
-                                  padding: const EdgeInsets.all(6),
-                                  decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(12)),
-                                    color: const Color(0xffF4F4F4),
-                                    border: Border.all(
-                                        width: 2,
-                                        color: homeState.isTemplate
-                                            ? const Color(0xff458BE7)
-                                            : const Color(0xffD9D9D9)),
-                                  ),
-                                  child: Text(
-                                    'Template',
-                                    style: GoogleFonts.openSans(
-                                        fontSize: 14, color: Colors.grey[600]),
-                                  ),
-                                ),
-                              ),
-                            ),
-                            Visibility(
-                              visible: homeState.isRecent,
-                              child: const SizedBox(
-                                width: 10,
-                              ),
-                            ),
-                            InkWell(
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(12)),
-                              onTap: () {
-                                if (homeState.isTemplate) {
-                                  ref
-                                      .read(homeStateProvider.notifier)
-                                      .setTemplate(false);
-                                }
-                              },
-                              child: AnimatedContainer(
-                                padding: const EdgeInsets.all(6),
-                                decoration: BoxDecoration(
-                                  borderRadius: const BorderRadius.all(
-                                      Radius.circular(12)),
-                                  color: const Color(0xffF4F4F4),
-                                  border: Border.all(
-                                      width: 2,
-                                      color: !homeState.isTemplate
-                                          ? const Color(0xff458BE7)
-                                          : const Color(0xffD9D9D9)),
-                                ),
-                                duration: buttonDuration,
-                                child: Text(
-                                  'Route',
-                                  style: GoogleFonts.openSans(
-                                      fontSize: 14, color: Colors.grey[600]),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
                       ],
                     ),
                   ),
                 ],
               ),
             ),
-            homeState.isTemplate
-                ? Expanded(
-                    child: ListView.builder(
-                      physics: const BouncingScrollPhysics(),
-                      itemCount: 10,
-                      itemBuilder: (BuildContext context, int index) {
-                        return Container(
-                          margin: const EdgeInsets.symmetric(
-                              horizontal: 15, vertical: 7),
-                          height: 200,
-                          decoration: BoxDecoration(
-                            color: Theme.of(context).cardColor,
-                            borderRadius:
-                                const BorderRadius.all(Radius.circular(30)),
-                            boxShadow: const [
-                              BoxShadow(
-                                color: Color.fromRGBO(114, 129, 223, 0.2),
-                                spreadRadius: 1,
-                                blurRadius: 8,
-                                offset:
-                                    Offset(0, 3), // changes position of shadow
-                              ),
-                            ],
-                          ),
-                        );
-                      },
-                    ),
-                  )
-                : Expanded(
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                      child: GridView.builder(
-                        physics: const BouncingScrollPhysics(),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                          childAspectRatio: 1 / 1.2,
-                          crossAxisCount: 2,
-                        ),
-                        itemCount: 10,
-                        itemBuilder: (BuildContext context, int index) {
-                          return Container(
-                            margin: const EdgeInsets.all(7),
-                            height: 200,
-                            decoration: BoxDecoration(
-                              color: Theme.of(context).cardColor,
-                              borderRadius:
-                                  const BorderRadius.all(Radius.circular(30)),
-                              boxShadow: const [
-                                BoxShadow(
-                                  color: Color.fromRGBO(114, 129, 223, 0.2),
-                                  spreadRadius: 1,
-                                  blurRadius: 8,
-                                  offset: Offset(
-                                      0, 3), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                          );
-                        },
-                      ),
-                    ),
+            Expanded(
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: GridView.builder(
+                  physics: const BouncingScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    childAspectRatio: 1 / 1.2,
+                    crossAxisCount: 2,
                   ),
+                  itemCount: 10,
+                  itemBuilder: (BuildContext context, int index) {
+                    return Container(
+                      margin: const EdgeInsets.all(7),
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: Theme.of(context).cardColor,
+                        borderRadius:
+                            const BorderRadius.all(Radius.circular(30)),
+                        boxShadow: const [
+                          BoxShadow(
+                            color: Color.fromRGBO(114, 129, 223, 0.2),
+                            spreadRadius: 1,
+                            blurRadius: 8,
+                            offset: Offset(0, 3), // changes position of shadow
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                ),
+              ),
+            ),
           ],
         ),
       ),

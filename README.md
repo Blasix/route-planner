@@ -1,16 +1,9 @@
-# maps_test
+# Route Planner
 
-A new Flutter project.
+## Introduction
 
-## Getting Started
+A flutter app for making computer generated walking or biking routes. The app is previously known as [routr](https://github.com/Blasix/Routr).
 
-This project is a starting point for a Flutter application.
+## Releases
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+The app is currently in development and is not yet ready for use.

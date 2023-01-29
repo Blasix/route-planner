@@ -31,6 +31,3 @@ class HomeStateNotifier extends Notifier<HomeState> {
 
 final homeStateProvider =
     NotifierProvider<HomeStateNotifier, HomeState>(HomeStateNotifier.new);
-
-// final homeStateProvider = NotifierProvider<TemplateNotifier, HomeState>(TemplateNotifier
-//     );

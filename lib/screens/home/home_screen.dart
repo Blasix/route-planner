@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:maps_test/models/route_template_model.dart';
@@ -10,6 +11,35 @@ class HomeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    Future<bool> _handleLocationPermission() async {
+      bool serviceEnabled;
+      LocationPermission permission;
+
+      serviceEnabled = await Geolocator.isLocationServiceEnabled();
+      if (!serviceEnabled) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+                'Location services are disabled. Please enable the services')));
+        return false;
+      }
+      permission = await Geolocator.checkPermission();
+      if (permission == LocationPermission.denied) {
+        permission = await Geolocator.requestPermission();
+        if (permission == LocationPermission.denied) {
+          ScaffoldMessenger.of(context).showSnackBar(
+              const SnackBar(content: Text('Location permissions are denied')));
+          return false;
+        }
+      }
+      if (permission == LocationPermission.deniedForever) {
+        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+            content: Text(
+                'Location permissions are permanently denied, we cannot request permissions.')));
+        return false;
+      }
+      return true;
+    }
+
     const buttonDuration = Duration(milliseconds: 300);
     final template = ref.watch(templateNotifierProvider);
     final homeState = ref.watch(homeStateProvider);
@@ -217,11 +247,22 @@ class HomeScreen extends ConsumerWidget {
                             InkWell(
                               borderRadius:
                                   const BorderRadius.all(Radius.circular(12)),
-                              onTap: () {
-                                template.isWalking
-                                    ? print('Walking')
-                                    : print('Biking');
-                                print('${template.distance} KM');
+                              onTap: () async {
+                                bool locationEnabled =
+                                    await _handleLocationPermission();
+                                if (locationEnabled) {
+                                  Position position =
+                                      await Geolocator.getCurrentPosition(
+                                          desiredAccuracy:
+                                              LocationAccuracy.high);
+                                  print(position.latitude);
+                                  print(position.longitude);
+                                  template.isWalking
+                                      ? print('Walking')
+                                      : print('Biking');
+                                  print('${template.distance} KM');
+                                }
+                                return;
                               },
                               child: Container(
                                 padding:

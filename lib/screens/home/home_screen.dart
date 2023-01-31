@@ -4,7 +4,8 @@ import 'package:geolocator/geolocator.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:maps_test/screens/map/map_screen.dart';
-import '/loading_manager.dart';
+import 'package:maps_test/screens/settings/settings_screen.dart';
+import '../loading_manager.dart';
 import '../../models/route_template_model.dart';
 import 'home_state.dart';
 
@@ -59,7 +60,14 @@ class HomeScreen extends ConsumerWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          const Icon(Icons.settings_outlined),
+                          InkWell(
+                              onTap: () => Navigator.of(context).push(
+                                    MaterialPageRoute(
+                                      builder: (context) =>
+                                          const SettingsScreen(),
+                                    ),
+                                  ),
+                              child: const Icon(Icons.settings_outlined)),
                           Text(
                             '👋 Hello, User',
                             style: GoogleFonts.openSans(

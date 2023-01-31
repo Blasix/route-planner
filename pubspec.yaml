@@ -16,6 +16,8 @@ dependencies:
   flutter_hooks: ^0.18.5+1
   hooks_riverpod: ^2.1.3
   geolocator: ^9.0.2
+  smooth_page_indicator: ^1.0.0+2
+  shared_preferences: ^2.0.17
 
 dev_dependencies:
   flutter_test:

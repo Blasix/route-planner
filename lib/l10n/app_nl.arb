@@ -1,0 +1,14 @@
+{
+    "@_UNIVERSAL": {},
+    "currentLanguage": "Nederlands",
+
+    "@_SETTINGS": {},
+    "settings": "Instellingen",
+
+    "@_HOME": {},
+    "createRoute": "Route\nCreëren",
+    "go": "GA!",
+    "recent": "Recent",
+    "liked": "Geliked",
+    "helloUser": "👋 Hallo, {input}"
+}

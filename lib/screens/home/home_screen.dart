@@ -5,6 +5,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:hooks_riverpod/hooks_riverpod.dart';
 import 'package:maps_test/screens/map/map_screen.dart';
 import 'package:maps_test/screens/settings/settings_screen.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import '../loading_manager.dart';
 import '../../models/route_template_model.dart';
 import 'home_state.dart';
@@ -69,7 +70,7 @@ class HomeScreen extends ConsumerWidget {
                                   ),
                               child: const Icon(Icons.settings_outlined)),
                           Text(
-                            '👋 Hello, User',
+                            AppLocalizations.of(context)!.helloUser('User'),
                             style: GoogleFonts.openSans(
                               fontSize: 20,
                               fontWeight: FontWeight.w600,
@@ -102,7 +103,7 @@ class HomeScreen extends ConsumerWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            'Create\nRoute',
+                            AppLocalizations.of(context)!.createRoute,
                             style: GoogleFonts.openSans(
                               height: 1,
                               fontSize: 36,
@@ -298,7 +299,7 @@ class HomeScreen extends ConsumerWidget {
                                   ),
                                   child: Row(children: [
                                     Text(
-                                      'GO!',
+                                      AppLocalizations.of(context)!.go,
                                       style: GoogleFonts.openSans(
                                         fontSize: 20,
                                         fontWeight: FontWeight.w600,
@@ -347,7 +348,7 @@ class HomeScreen extends ConsumerWidget {
                                             : const Color(0xffD9D9D9)),
                                   ),
                                   child: Text(
-                                    'Recent',
+                                    AppLocalizations.of(context)!.recent,
                                     style: GoogleFonts.openSans(
                                       fontSize: 22,
                                     ),
@@ -381,7 +382,7 @@ class HomeScreen extends ConsumerWidget {
                                             : const Color(0xffD9D9D9)),
                                   ),
                                   child: Text(
-                                    'Liked',
+                                    AppLocalizations.of(context)!.liked,
                                     style: GoogleFonts.openSans(
                                       fontSize: 22,
                                     ),

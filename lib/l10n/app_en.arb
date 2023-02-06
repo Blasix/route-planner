@@ -1,0 +1,15 @@
+{
+    "@_UNIVERSAL": {},
+    "currentLanguage": "English",
+
+    "@_SETTINGS": {},
+    "settings": "Settings",
+
+    "@_HOME": {},
+    "createRoute": "Create\nRoute",
+    "go": "GO!",
+    "recent": "Recent",
+    "liked": "Liked",
+    "helloUser": "👋 Hello, {input}"
+
+}
